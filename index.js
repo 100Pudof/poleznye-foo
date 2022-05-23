@@ -175,3 +175,54 @@ let foo = (str) => {
     return result;
 }
 console.log(foo(121))
+// -----|
+// кастомный чекбокс
+.custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &+label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            border: 2px solid #002CFB;
+            border-radius: 0.25em;
+            margin-right: 0.5em;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 50% 50%;
+            cursor: pointer;
+        }
+    }
+
+    &:checked+label::before {
+        border-color: #002CFB;
+        // background-color: #0b76ef;
+        border-width: 1px;
+        background-repeat: no-repeat;
+        background: url("..//img/checkbox.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #002CFB;
+    border-width: 2px;
+}
+
+/* стили для активного состояния чекбокса (при нажатии на него) */
+/* .custom-checkbox:not(:disabled):active+label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+} */
